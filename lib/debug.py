@@ -1,13 +1,16 @@
-#!/usr/bin/env python3
-import ipdb;
+from classes.many_to_many import Author, Magazine, Article
 
-from classes.many_to_many import Article
-from classes.many_to_many import Author
-from classes.many_to_many import Magazine
+# Create sample data
+author1 = Author("Alice")
+author2 = Author("Bob")
 
-if __name__ == '__main__':
-    print("HELLO! :) let's debug :vibing_potato:")
+magazine1 = Magazine("Tech Today", "Technology")
+magazine2 = Magazine("Health Weekly", "Health")
 
+article1 = author1.add_article(magazine1, "AI is the Future")
+article2 = author1.add_article(magazine2, "Nutrition and Wellness")
+article3 = author2.add_article(magazine1, "Quantum Computing Explained")
 
-    # don't remove this line, it's for debugging!
-    ipdb.set_trace()
+print("Author Articles:", author1.articles())
+print("Author Magazines:", author1.magazines())
+print("Magazine Contributors:", magazine1.contributors())
